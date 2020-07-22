@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::group([
+    'prefix' => '/admin'
+], function () {
+    Route::get('/home', 'Web\HomeController@index')
+        ->name('home');
+
+    Route::group([
+        'prefix' => '/api'
+    ], function () {
+        Route::post('/create', 'Api\ApiCartorioController@create')
+            ->name('cartorio.create');
+    });
+});

@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/admin/home';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -30,7 +30,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::pattern('id', '[0-9]+');
+        Route::pattern('cartorio', '[0-9]+');
+        Route::pattern('string', '[A-Za-z]+');
 
         parent::boot();
     }
