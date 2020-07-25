@@ -2,21 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\DefaultController;
+use App\Models\Cartorios;
 
-class HomeController extends Controller
+class HomeController extends DefaultController
 {
     private $viewPath = "admin.";
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -26,5 +17,34 @@ class HomeController extends Controller
     public function index()
     {
         return view($this->viewPath.'home.index');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function carga()
+    {
+        return view($this->viewPath.'home.carga');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        $documento = $this->ITipoDocumentoService->listTipoDocumento();
+        return view($this->viewPath.'home.create', compact('documento'));
+    }
+
+    /**
+     * @param Cartorios $cartorio
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(Cartorios $cartorio)
+    {
+        $cartorio = $this->ICartoriosService->getCartorioById($cartorio);
+        $documento = $this->ITipoDocumentoService->listTipoDocumento();
+
+        return view($this->viewPath.'home.show', compact('cartorio', 'documento'));
     }
 }

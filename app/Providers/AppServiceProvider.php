@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
-use App\Interfaces\Cartorios\ICartoriosRepository;
-use App\Interfaces\Cartorios\ICartoriosService;
-use App\Repositories\Cartorios\CartoriosRepository;
-use App\Services\Cartorios\CartoriosService;
+use App\Application\Interfaces\Cartorios\ICartoriosRepository;
+use App\Application\Interfaces\Cartorios\ICartoriosService;
+use App\Application\Interfaces\TipoDocumento\ITipoDocumentoRepository;
+use App\Application\Interfaces\TipoDocumento\ITipoDocumentoService;
+use App\Application\Repositories\Cartorios\CartoriosRepository;
+use App\Application\Repositories\TipoDocumento\TipoDocumentoRepository;
+use App\Application\Services\Cartorios\CartoriosService;
+use App\Application\Services\TipoDocumento\TipoDocumentoService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +30,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             ICartoriosRepository::class,
             CartoriosRepository::class
+        );
+
+        // Tipo Documento
+        $this->app->singleton(
+            ITipoDocumentoService::class,
+            TipoDocumentoService::class
+        );
+
+        $this->app->singleton(
+            ITipoDocumentoRepository::class,
+            TipoDocumentoRepository::class
         );
     }
 

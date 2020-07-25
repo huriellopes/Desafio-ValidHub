@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Validates;
+namespace App\Application\Validates;
 
 use Illuminate\Support\Facades\Validator;
 use stdClass;

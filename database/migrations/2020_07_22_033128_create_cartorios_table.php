@@ -24,6 +24,8 @@ class CreateCartoriosTable extends Migration
             $table->string('bairro')->nullable();
             $table->string('cidade')->nullable();
             $table->string('uf')->nullable();
+            $table->string('telefone')->nullable();
+            $table->string('email')->nullable();
             $table->string('tabeliao')->nullable();
             $table->char('ativo', 2)->nullable();
             $table->unsignedInteger('user_id');

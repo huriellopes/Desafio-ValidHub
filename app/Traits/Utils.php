@@ -2,8 +2,7 @@
 
 namespace App\Traits;
 
-use App\Application\Imports\CartoriosImport;
-use Maatwebsite\Excel\Facades\Excel;
+use SimpleXMLElement;
 
 trait Utils
 {
@@ -19,18 +18,24 @@ trait Utils
     }
 
     /**
-     * @param $arquivo
-     * @return \SimpleXMLElement
+     * Função para limpar Mascara
+     *
+     * @param $variavel
+     * @return string|string[]|null
      */
-    public function getXML($arquivo)
+    public function limpaMascara($variavel)
     {
-        $string = file_get_contents($arquivo);
-
-        return simplexml_load_string($string);
+        return preg_replace('/\D+/', '', $variavel);
     }
 
-//    public function ExportExcel($arquivo)
-//    {
-//        return Excel::import(new CartoriosImport, $arquivo,'',\Maatwebsite\Excel\Excel::XLSX);
-//    }
+    /**
+     * Função para ler arquivo XML
+     *
+     * @param $arquivo
+     * @return SimpleXMLElement
+     */
+    public function readingXML($arquivo)
+    {
+        return simplexml_load_string($arquivo);
+    }
 }

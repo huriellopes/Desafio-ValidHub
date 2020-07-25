@@ -1,79 +1,116 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# 💻 Desafio PHP Pleno ValidHub
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+> Desafio proposto do processo seletivo de vaga de Analista Dev PHP Pleno, o cliente **Anoreg** (Associação que cuida dos interesses e representa os cartórios 
+>em situações judiciais e outrs), atualmente o cliente utiliza Excel para manter a base de cartórios atuliazada, o mesmo 
+>recebe um arquivo xml e precisa abrir o arquivo para atualizar o seu excel! Pensando nisso, foi desenvolvido um sistema 
+>que faz a leitura do xml para dar carga no banco de dados, deixando apenas o email e o telefone para o usuário atualizar,
+>o mesmo podendo também cadastrar um cartório manualmente, ativar e inativar o cartório via listagem, sendo assim, não 
+>precisando mais de excel para ter seu controle!
 
-## About Laravel
+## ⚠ Requisitos:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP >= 7.2.5
+- Node.Js >= 12.13.1
+- NPM >= 6.13.4
+- PostgreSQL >= 12.2
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##### Deve ter o ambiente para o laravel configurado:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- BCMath PHP Extension
+- Ctype PHP Extension
+- Fileinfo PHP extension
+- JSON PHP Extension
+- Mbstring PHP Extension
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📝 O que foi utilizado?
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Laravel 7.* (última versão)
+- PostgreSQL
+- Jquery
+- Bootstrap
+- Jquery Mask
+- Jquery Validate
+- Jquery BlockUI
+- DataTables
+- FontAwesome
+- Moment
+- SweetAlert
 
-## Laravel Sponsors
+## ⚡ Testando a aplicação?
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+> Você pode realizar o clone deste repositório ou baixar o arquivo .zip!
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+##### Clone este repositório:
 
-## Contributing
+````
+git clone https://github.com/huriellopes/Desafio-ValidHub.git
+````
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para baixar o zip: [https://github.com/huriellopes/Desafio-ValidHub/archive/master.zip](https://github.com/huriellopes/Desafio-ValidHub/archive/master.zip)
 
-## Code of Conduct
+## ✔ Executando a aplicação:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+##### Na raiz do projeto, execute os comandos:
 
-## Security Vulnerabilities
+````
+# Para instalar as dependências do Laravel
+componser install
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Para instalar as dependecias do node_modules
+npm install && npm run dev
+```` 
 
-## License
+##### Copie e configure as variaveis de ambiente no arquivo .env:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+````
+# Para copiar o .env.example para .env
+copy .env.example .env ou cp .env.example .env
+
+# Para gerar a key do projeto
+php artisan key:generate
+
+# configure as seguintes variaveis de ambiente
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Atenção: Deve ser PostgreSQL e lembre-se de criar o schema/banco!
+````
+
+##### Depois de configurar as variaveis de ambiente, ainda no raiz do projeto, execute os comandos:
+
+````
+# Para rodar as migrates e seeds
+php artisan migrate --seed
+
+# Caso queira desafazer
+php artisan migrate:rollback
+
+# Para rodar o servidor embutido
+php artisan serve
+
+# Irá executar na seguinte url, abra no navegador
+http://localhost:8000
+
+# Para acessar o sistema, use as seguintes credenciais
+👨 ‍Login: admin@email.com
+🔐 Senha: secret
+
+# Para testar a carga dos cartórios pelo xml, utilize o arquivo na pasta: exemplo/cartorios.xml
+````
+
+## Créditos
+
+Empresa ValidHub
+
+## 📝 Licença
+
+Esse projeto está sob a licença MIT. Veja aqui [MIT](LICENSE)

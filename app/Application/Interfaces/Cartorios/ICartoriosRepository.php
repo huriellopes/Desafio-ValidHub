@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Interfaces\Cartorios;
+namespace App\Application\Interfaces\Cartorios;
 
 use App\Models\Cartorios;
 use Illuminate\Database\Eloquent\Collection;
 use stdClass;
+use SimpleXMLElement;
 
-interface ICartoriosService
+interface ICartoriosRepository
 {
     /**
      * @return Collection
@@ -20,10 +21,22 @@ interface ICartoriosService
     public function createCartorio(stdClass $params) : Cartorios;
 
     /**
+     * @param SimpleXMLElement $params
+     * @return Cartorios
+     */
+    public function cargaXML(SimpleXMLElement $params) : Cartorios;
+
+    /**
      * @param Cartorios $cartorio
      * @return Cartorios
      */
     public function getCartorioById(Cartorios $cartorio) : Cartorios;
+
+    /**
+     * @param string $email
+     * @return Cartorios
+     */
+    public function getCartorioByEmail(string $email): Cartorios;
 
     /**
      * @param Cartorios $cartorio
@@ -34,7 +47,13 @@ interface ICartoriosService
 
     /**
      * @param Cartorios $cartorio
-     * @return bool
+     * @return Cartorios
      */
-    public function deleteCartorio(Cartorios $cartorio) : bool;
+    public function activeCartorio(Cartorios $cartorio) : Cartorios;
+
+    /**
+     * @param Cartorios $cartorio
+     * @return Cartorios
+     */
+    public function inactiveCartorio(Cartorios $cartorio) : Cartorios;
 }
