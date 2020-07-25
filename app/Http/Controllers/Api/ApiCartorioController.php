@@ -83,7 +83,7 @@ class ApiCartorioController extends DefaultController
                 $params->tabeliao = $this->limpa_tags($request->input('tabeliao'));
 
                 $email = $this->ICartoriosService->getCartorioByEmail($params->email);
-                dd($email);
+
                 if (!is_null($email)) {
                     return response()->json([
                         'status' => 400,
