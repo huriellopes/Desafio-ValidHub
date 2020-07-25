@@ -41,7 +41,7 @@
 - Moment
 - SweetAlert
 
-## ⚡ Testando a aplicação?
+## ⚡ Mão na massa: 
 
 > Você pode realizar o clone deste repositório ou baixar o arquivo .zip!
 
