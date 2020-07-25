@@ -79,9 +79,9 @@ class CartoriosRepository implements ICartoriosRepository
 
     /**
      * @param string $email
-     * @return Cartorios
+     * @return Cartorios|null
      */
-    public function getCartorioByEmail(string $email): Cartorios
+    public function getCartorioByEmail(string $email): ?Cartorios
     {
         return Cartorios::where('email', '=', $email)->first();
     }

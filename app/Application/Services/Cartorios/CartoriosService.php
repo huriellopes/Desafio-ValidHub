@@ -64,9 +64,9 @@ class CartoriosService implements ICartoriosService
 
     /**
      * @param string $email
-     * @return Cartorios
+     * @return Cartorios|null
      */
-    public function getCartorioByEmail(string $email): Cartorios
+    public function getCartorioByEmail(string $email): ?Cartorios
     {
         return $this->ICartoriosRepository->getCartorioByEmail($email);
     }

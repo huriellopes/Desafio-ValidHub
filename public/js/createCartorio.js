@@ -141,23 +141,29 @@ const CreateCartorio = function () {
 
                 setTimeout($.unblockUI, 2000);
 
-                requisicao(cartorioForm.attr('action'), cartorioForm.serialize(), 'POST').then(response => {
-                    if (response.status === 201) {
-                        setTimeout($.unblockUI, 2000);
-                        swal('Ótimo!', response.message, 'success');
-                        setTimeout(function () {
-                            window.location.href = "/admin/home";
-                        }, 1500);
-                    }
-                }).catch(response => {
-                    if (response === 400) {
-                        setTimeout($.unblockUI, 2000);
-                        swal('Atenção!', response.message, 'error');
-                    } else {
-                        setTimeout($.unblockUI, 2000);
-                        swal('Atenção!', response.message, 'error');
-                    }
-                });
+                requisicao(cartorioForm.attr('action'), cartorioForm.serialize(), 'POST')
+                    .then(response => {
+                        console.log(response.status);
+                        console.log(response.responseJSON);
+                        if (response.status === 201) {
+                            setTimeout($.unblockUI, 2000);
+                            swal('Ótimo!', response.message, 'success');
+                            setTimeout(function () {
+                                window.location.href = "/admin/home";
+                            }, 1500);
+                        } else {
+                            setTimeout($.unblockUI, 2000);
+                            swal('Atenção!', 'Houve um error!', 'error');
+                        }
+                    }).catch(response => {
+                        if (response.responseJSON.status === 400) {
+                            setTimeout($.unblockUI, 2000);
+                            swal('Atenção!', response.responseJSON.message, 'error');
+                        } else {
+                            setTimeout($.unblockUI, 2000);
+                            swal('Atenção!', 'Houve um error!', 'error');
+                        }
+                    });
             }
         });
 

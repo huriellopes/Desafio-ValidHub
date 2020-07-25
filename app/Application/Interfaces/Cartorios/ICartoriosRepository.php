@@ -34,9 +34,9 @@ interface ICartoriosRepository
 
     /**
      * @param string $email
-     * @return Cartorios
+     * @return Cartorios|null
      */
-    public function getCartorioByEmail(string $email): Cartorios;
+    public function getCartorioByEmail(string $email): ?Cartorios;
 
     /**
      * @param Cartorios $cartorio

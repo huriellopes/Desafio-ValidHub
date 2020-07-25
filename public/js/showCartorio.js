@@ -2,6 +2,8 @@ const ShowCartorio = function () {
     let initPlugin = function () {
         mascaraInput('cep','00000-000');
 
+        let telefone = $('#telefone').val().length;
+
         const optionstelefone = {
             onKeyPress : function(telefone, e, field, options) {
                 let masks = ['00 00000-0000', '00 0000-0000'];
@@ -10,14 +12,28 @@ const ShowCartorio = function () {
             }
         };
 
-        $('#telefone').mask('000.000.000-000', optionstelefone);
+        if (telefone >= 11) {
+            $('#telefone').mask('00 00000-0000', optionstelefone);
+        } else {
+            $('#telefone').mask('00 0000-0000', optionstelefone);
+        }
+
+        $('#telefone').mask('00 00000-0000', optionstelefone);
+
+        const options = {
+            onKeyPress : function(cpfcnpj, e, field, options) {
+                let masks = ['000.000.000-000', '00.000.000/0000-00'];
+                let mask = (cpfcnpj.length > 14) ? masks[1] : masks[0];
+                $('#documento').mask(mask, options);
+            }
+        };
 
         let tamanho = $("#documento").val().length;
 
         if(tamanho <= 11){
-            $("#documento").mask("999.999.999-99");
+            $("#documento").mask("999.999.999-99", options);
         } else {
-            $("#documento").mask("99.999.999/9999-99");
+            $("#documento").mask("99.999.999/9999-99", options);
         }
     };
 
