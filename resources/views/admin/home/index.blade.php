@@ -12,7 +12,9 @@
             <div class="card">
                 <div class="card-header">Lista de Cartórios</div>
 
-                <h3 class="text-center card-title font-weight-bold text-uppercase mt-3" id="loading">Carregando...</h3>
+                <h3 class="text-center card-title font-weight-bold text-uppercase mt-3" id="loading">
+                    <img src="{{ asset('image/loader.gif') }}" alt="Loader" width="25%" />
+                </h3>
 
                 <div class="card-body tabela" style="display: none">
                     <table class="table table-bordered table-striped" id="datables">

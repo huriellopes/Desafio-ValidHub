@@ -79,7 +79,7 @@ class CartoriosService implements ICartoriosService
     public function cargaXML(SimpleXMLElement $params) : Cartorios
     {
         // Valida os parâmetros recebidos
-        $this->getCartoriosValidate()->ValidaCarga((array) $params);
+        $this->getCartoriosValidate()->ValidaCarga((array) $params, 'Erro ao validar os parâmetros');
 
         foreach ($params as $cartorioXML) {
             $cartorio = $this->ICartoriosRepository->cargaXML($cartorioXML);

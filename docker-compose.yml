@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  laravel:
+    container_name: laravel
+    image: fabiojanio/php:7.4-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./:/app
+    command: php -S 0.0.0.0:80 -t /app/public
+    networks:
+      - private_network
+  postgress:
+    container_name: postgress
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Sua_senha"
+      POSTGRES_DB: "seu_banco"
+    restart: always
+    networks:
+      - private_network
+
+networks:
+  private_network:

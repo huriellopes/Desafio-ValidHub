@@ -38,13 +38,24 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                                <a class="nav-link" href="{{ route('home') }}">
+                                    Inicio
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('carga/xml') }}">Carga XML</a>
+                                <a class="nav-link" href="{{ route('carga/xml') }}">
+                                    Carga XML
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('cartorio/create') }}">Cadastrar Cartório</a>
+                                <a class="nav-link" href="{{ route('cartorio/create') }}">
+                                    Cadastrar Cartório
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin/report') }}">
+                                    Relatório
+                                </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,7 +98,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.3/jquery.inputmask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
     <script src="{{ asset('js/funcao_uteis.js') }}"></script>
     @yield('scripts')
 </body>

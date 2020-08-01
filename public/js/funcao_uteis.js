@@ -53,4 +53,17 @@ const FuncoesUteis = function () {
         });
     };
 
+    calendarDate = (input) => {
+        $("#"+input).datepicker({
+            language: 'pt-BR',
+            format: 'dd/mm/yyyy',
+            startDate: '+0d',
+            forceParse: true,
+            todayBtn: "linked",
+            todayHighlight: true,
+            autoclose: true,
+            orientation: 'bottom',
+        });
+    };
+
 }();

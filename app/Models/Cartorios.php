@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cartorios extends Model
 {
+    protected $connection = "pgsql";
+
     protected $table = 'cartorios';
 
     protected $primaryKey = "id";

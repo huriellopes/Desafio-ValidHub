@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\Erro\ErroEnum;
 use App\Http\Controllers\DefaultController;
 use App\Models\Cartorios;
 use Illuminate\Http\Request;
@@ -25,9 +26,9 @@ class ApiCartorioController extends DefaultController
             ], 200);
         } catch (Exception $err) {
             return response()->json([
-                'status' => 400,
-                'message' => 'Erro ao listar os cartórios!'
-            ], 400);
+                'status' => ErroEnum::STATUS_400,
+                'message' => ErroEnum::RESPOSTA_400
+            ], ErroEnum::STATUS_400);
         }
     }
 
@@ -58,9 +59,9 @@ class ApiCartorioController extends DefaultController
         } catch(Exception $err) {
             DB::rollBack();
             return response()->json([
-                'status' => 400,
-                'message' => 'Erro ao cadastrar os cartórios!'
-            ], 400);
+                'status' => ErroEnum::STATUS_400,
+                'message' => ErroEnum::RESPOSTA_400
+            ], ErroEnum::STATUS_400);
         }
     }
 
@@ -86,9 +87,9 @@ class ApiCartorioController extends DefaultController
 
                 if (!is_null($email)) {
                     return response()->json([
-                        'status' => 400,
+                        'status' => ErroEnum::STATUS_400,
                         'message' => 'Email já existente na base de dados!'
-                    ], 400);
+                    ], ErroEnum::STATUS_400);
                 }
 
                 $this->ICartoriosService->createCartorio($params);
@@ -101,9 +102,9 @@ class ApiCartorioController extends DefaultController
         } catch (Exception $err) {
             DB::rollBack();
             return response()->json([
-                'status' => 400,
-                'message' => 'Erro ao cadastrar os cartórios!'
-            ], 400);
+                'status' => ErroEnum::STATUS_400,
+                'message' => ErroEnum::RESPOSTA_400
+            ], ErroEnum::STATUS_400);
         }
     }
 
@@ -136,9 +137,9 @@ class ApiCartorioController extends DefaultController
         } catch (Exception $err) {
             DB::rollBack();
             return response()->json([
-                'status' => 400,
-                'message' => 'Erro ao cadastrar os cartórios!'
-            ], 400);
+                'status' => ErroEnum::STATUS_400,
+                'message' => ErroEnum::RESPOSTA_400
+            ], ErroEnum::STATUS_400);
         }
     }
 
@@ -160,9 +161,9 @@ class ApiCartorioController extends DefaultController
         } catch (Exception $err) {
             DB::rollBack();
             return response()->json([
-                'status' => 400,
-                'message' => 'Erro ao ativar o cartório!'
-            ], 400);
+                'status' => ErroEnum::STATUS_400,
+                'message' => ErroEnum::RESPOSTA_400
+            ], ErroEnum::STATUS_400);
         }
     }
 
@@ -185,9 +186,9 @@ class ApiCartorioController extends DefaultController
         } catch (Exception $err) {
             DB::rollBack();
             return response()->json([
-                'status' => 400,
-                'message' => 'Erro ao inativar o cartório!'
-            ], 400);
+                'status' => ErroEnum::STATUS_400,
+                'message' => ErroEnum::RESPOSTA_400
+            ], ErroEnum::STATUS_400);
         }
     }
 }

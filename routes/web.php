@@ -30,6 +30,8 @@ Route::group([
         ->name('cartorio/create');
     Route::get('/show/{cartorio}', 'Web\HomeController@show')
         ->name('cartorio/show');
+    Route::get('/report', 'Web\ReportController@index')
+        ->name('admin/report');
 
     Route::group([
         'prefix' => '/api'
@@ -46,5 +48,7 @@ Route::group([
             ->name('cartorio.active');
         Route::post('/inactive/{cartorio}', 'Api\ApiCartorioController@inactive')
             ->name('cartorio.inactive');
+        Route::post('/report', 'Api\ApiReportController@index')
+            ->name('admin.report');
     });
 });

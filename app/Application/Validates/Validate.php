@@ -2,6 +2,7 @@
 
 namespace App\Application\Validates;
 
+use App\Enum\Erro\ErroEnum;
 use Illuminate\Support\Facades\Validator;
 use stdClass;
 use Exception;
@@ -12,17 +13,16 @@ class Validate
     protected $messages = [];
 
     /**
-     * Valida os parâmetros
-     *
      * @param stdClass $params
+     * @param string $message
      * @throws Exception
      */
-    public function validaParametros(stdClass $params) : void
+    public function validaParametros(stdClass $params, $message = ErroEnum::RESPOSTA_400) : void
     {
         $validator = Validator::make((array) $params, $this->getRules(), $this->getMessages());
 
         if ($validator->fails()) {
-            throw new Exception('Erro ao validar os parâmetros!', 400);
+            throw new Exception($message, ErroEnum::STATUS_400);
         }
     }
 
@@ -35,7 +35,7 @@ class Validate
     public function validaInteiro(int $id) : void
     {
         if (!is_int($id)) {
-            throw new Exception('Erro ao validar o inteiro!', 400);
+            throw new Exception('Erro ao validar o inteiro!', ErroEnum::STATUS_400);
         }
     }
 

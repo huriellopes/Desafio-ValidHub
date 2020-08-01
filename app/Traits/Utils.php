@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use Carbon\Carbon;
 use SimpleXMLElement;
 
 trait Utils
@@ -15,6 +16,11 @@ trait Utils
     public function limpa_tags($variavel)
     {
         return preg_replace('(<(/?[^\>]+)>)', '', $variavel);
+    }
+
+    public function formatDate($date, $format)
+    {
+        return Carbon::createFromFormat('d/m/Y', $date)->format($format);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Application\Validates\Catorios;
 
 use App\Application\Validates\Validate;
+use App\Enum\Erro\ErroEnum;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 
@@ -39,12 +40,12 @@ class CartoriosValidate extends Validate
 
     protected $messages = [];
 
-    public function ValidaCarga(array $params): void
+    public function ValidaCarga(array $params, $message = ErroEnum::RESPOSTA_400): void
     {
         $validator = Validator::make($params, $this->getRulesCarga(), $this->getMessages());
 
         if ($validator->fails()) {
-            throw new Exception('Erro ao validar os parâmetros do arquivo xml!', 400);
+            throw new Exception($message, ErroEnum::STATUS_400);
         }
     }
 

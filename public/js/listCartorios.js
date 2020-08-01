@@ -109,10 +109,14 @@ const ListCartorios = function () {
                         "<a href='api/active/"+id+"' class='btnAtivo'><i class='far fa-check-circle text-success'></i></a></td>";
                     let tabeliao = cartorio.tabeliao === 'NULL' ? 'Sem Tabeliao' : cartorio.tabeliao;
 
+                    let viewCartorio = cartorio.ativo.replace(' ', '') === '1' ?
+                        `<td><a href='show/${id}'><i class='fas fa-eye text-primary'></i></a>`
+                        : '';
+
                     tabela.row.add ([
                         id, cartorio.nome, cartorio.razao, cartorio.tipo_documento.documento, cartorio.documento,
                         cartorio.cidade, cartorio.uf, tabeliao, status, data,
-                        `<td><a href='show/${id}'><i class='fas fa-eye text-primary'></i></a> ` +
+                        `${viewCartorio} ` +
                         `${ativo}`
                     ])
                 })

@@ -75,14 +75,26 @@ copy .env.example .env ou cp .env.example .env
 php artisan key:generate
 
 # configure as seguintes variaveis de ambiente
-DB_CONNECTION=mysql
+DB_CONNECTION=pgsql # default = mysql
 DB_HOST=127.0.0.1
-DB_PORT=3306
+DB_PORT=5432 # default = 3306
 DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
 
 # Atenção: Deve ser PostgreSQL e lembre-se de criar o schema/banco!
+````
+
+> Obs.: Caso queira utilizar docker, gá um docker-compose na raiz do projeto para startar dois containers,
+>o do php e o do banco de dados, antes de startar, configure as credenciais do banco de dados!
+
+````
+environment:
+ POSTGRES_USER: "postgres" ou "nome_user_desejado"
+ POSTGRES_PASSWORD: "senha_desejada"
+ POSTGRES_DB: "nome_banco"
+
+# O banco de dados está isolado, apenas a aplicação acessa!
 ````
 
 ##### Depois de configurar as variaveis de ambiente, ainda no raiz do projeto, execute os comandos:
@@ -105,11 +117,44 @@ http://localhost:8000
 🔐 Senha: secret
 
 # Para testar a carga dos cartórios pelo xml, utilize o arquivo na pasta: exemplo/cartorios.xml
+
+# Caso queira utilizar outro arquivo para dar carga no banco de dados pelo sistema, deve seguir o seguinte padrão de campos:
+
+nome
+razao
+tipo_documento # 1 = Pessoa Física ou 2 = Pessoa Jurídica
+documento
+cep
+endereco
+bairro
+cidade
+uf
+tabeliao
+ativo # 1 = ativo ou 0 = inativo
+
+# Exemplo abaixo:
+<cartorios>
+	<cartorio>
+		<nome>Cartório 1</nome>
+		<razao>Cartório da esquina</razao>
+		<tipo_documento>2</tipo_documento>
+		<documento>04470118000134</documento>
+		<cep>35430313</cep>
+		<endereco>Rua Rosa Maria Guimarães</endereco>
+		<bairro>Rasa</bairro>
+		<cidade>Ponte Nova</cidade>
+		<uf>MG</uf>
+		<tabeliao>Fulano de tal</tabeliao>
+		<ativo>1</ativo>
+	</cartorio>
+<cartorios>
 ````
 
 ## Créditos
 
-Empresa ValidHub
+Empresa Valid - Pelo desafio proposto
+
+Fabio Jânio - Pelas imagens que estão no docker-compose!
 
 ## 📝 Licença
 
