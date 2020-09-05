@@ -47,6 +47,7 @@
 
 - Autenticação
 - Carga de cartórios via XML
+- Busca de cep no momento do cadastro do cartório
 - Cadastro de cartório manualmente
 - Atualização de cadastro do cartório
 - Ativação e Inativação do cartório
