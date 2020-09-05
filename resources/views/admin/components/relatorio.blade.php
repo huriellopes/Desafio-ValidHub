@@ -38,7 +38,6 @@
     <table class="table table-striped table-hover table-bordered">
         <thead>
             <tr>
-                <th>Nome</th>
                 <th>Razão</th>
                 <th>Tipo Documento</th>
                 <th>Documento</th>
@@ -52,7 +51,6 @@
         <tbody>
             @foreach($dados as $dado)
                 <tr>
-                    <td>{{ $dado->nome }}</td>
                     <td>{{ $dado->razao }}</td>
                     <td>{{ $dado->tipodocumento->tipo }}</td>
                     <td>{{ $dado->documento }}</td>
