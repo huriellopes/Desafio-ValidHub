@@ -11,6 +11,8 @@ use stdClass;
 
 class ApiReportController extends DefaultController
 {
+    protected $ViewReport = 'admin.components.';
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -19,7 +21,10 @@ class ApiReportController extends DefaultController
     {
         try {
             DB::beginTransaction();
+                $uf = $request->input('uf');
+
                 $params = new stdClass();
+                $params->uf = $this->limpa_tags($uf);
                 $params->date_start = $this
                     ->limpa_tags($this
                         ->formatDate($request
@@ -29,13 +34,21 @@ class ApiReportController extends DefaultController
                         ->formatDate($request
                             ->input('date_end'), 'Y-m-d'));
 
-                $this->IReportService->reportBetweenDate($params);
+                $dados = $this->IReportService->reportBetweenDate($params);
+
+                $pdf = $this->geraPDF($this->ViewReport.'relatorio', $dados);
             DB::commit();
 
-            return response()->json([
-                'status' => 201,
-                'message' => 'Relatório gerado com sucesso!'
-            ], 201);
+            if ($pdf) {
+                return $pdf->download('relatorio_cartorios_'.$uf.'_'.date('d/m/Y').'.pdf');
+            } else {
+                throw new Exception('Erro ao gerar o relatório!', 400);
+            }
+
+//            return response()->json([
+//                'status' => 201,
+//                'message' => 'Relatório gerado com sucesso!'
+//            ], 200);
         } catch (Exception $err) {
             DB::rollBack();
             return response()->json([

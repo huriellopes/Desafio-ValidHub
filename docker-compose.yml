@@ -16,9 +16,11 @@ services:
     image: postgres:9.6
     environment:
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "Sua_senha"
-      POSTGRES_DB: "seu_banco"
+      POSTGRES_PASSWORD: "senha_desejada"
+      POSTGRES_DB: "nome_banco"
     restart: always
+    ports:
+      - 5432:5432
     networks:
       - private_network
 

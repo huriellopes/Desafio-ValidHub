@@ -114,7 +114,7 @@ const ListCartorios = function () {
                         : '';
 
                     tabela.row.add ([
-                        id, cartorio.nome, cartorio.razao, cartorio.tipo_documento.documento, cartorio.documento,
+                        id, cartorio.nome, cartorio.razao, cartorio.tipodocumento.documento, cartorio.documento,
                         cartorio.cidade, cartorio.uf, tabeliao, status, data,
                         `${viewCartorio} ` +
                         `${ativo}`

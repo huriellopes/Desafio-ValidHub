@@ -39,7 +39,18 @@
 - DataTables
 - FontAwesome
 - Moment
+- ViaCep
+- DomPDF
 - SweetAlert
+
+## ⚒ Funcionalidades:
+
+- Autenticação
+- Carga de cartórios via XML
+- Cadastro de cartório manualmente
+- Atualização de cadastro do cartório
+- Ativação e Inativação do cartório
+- Relatório de Cartório com geração PDF
 
 ## ⚡ Mão na massa: 
 

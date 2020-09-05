@@ -65,6 +65,10 @@ class ApiCartorioController extends DefaultController
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function create(Request $request)
     {
         try {
@@ -78,6 +82,7 @@ class ApiCartorioController extends DefaultController
                 $params->documento = $this->limpa_tags($this->limpaMascara($request->input('documento')));
                 $params->cep = $this->limpa_tags($this->limpaMascara($request->input('cep')));
                 $params->endereco = $this->limpa_tags($request->input('endereco'));
+                $params->complemento = $this->limpa_tags($request->input('complemento'));
                 $params->bairro = $this->limpa_tags($request->input('bairro'));
                 $params->cidade = $this->limpa_tags($request->input('cidade'));
                 $params->uf = $this->limpa_tags($request->input('uf'));
@@ -108,26 +113,32 @@ class ApiCartorioController extends DefaultController
         }
     }
 
+    /**
+     * @param Cartorios $cartorio
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(Cartorios $cartorio, Request $request)
     {
         try {
             DB::beginTransaction();
-            $params = new stdClass();
-            $params->nome = $this->limpa_tags($request->input('nome'));
-            $params->razao = $this->limpa_tags($request->input('razao'));
-            $params->email = $this->limpa_tags($request->input('email'));
-            $params->telefone = $this->limpa_tags($this->limpaMascara($request->input('telefone')));
-            $params->tipo_documento = $this->limpa_tags($request->input('tipo_documento'));
-            $params->documento = $this->limpa_tags($this->limpaMascara($request->input('documento')));
-            $params->cep = $this->limpa_tags($this->limpaMascara($request->input('cep')));
-            $params->endereco = $this->limpa_tags($request->input('endereco'));
-            $params->bairro = $this->limpa_tags($request->input('bairro'));
-            $params->cidade = $this->limpa_tags($request->input('cidade'));
-            $params->uf = $this->limpa_tags($request->input('uf'));
-            $params->tabeliao = $this->limpa_tags($request->input('tabeliao'));
+                $params = new stdClass();
+                $params->nome = $this->limpa_tags($request->input('nome'));
+                $params->razao = $this->limpa_tags($request->input('razao'));
+                $params->email = $this->limpa_tags($request->input('email'));
+                $params->telefone = $this->limpa_tags($this->limpaMascara($request->input('telefone')));
+                $params->tipo_documento = $this->limpa_tags($request->input('tipo_documento'));
+                $params->documento = $this->limpa_tags($this->limpaMascara($request->input('documento')));
+                $params->cep = $this->limpa_tags($this->limpaMascara($request->input('cep')));
+                $params->endereco = $this->limpa_tags($request->input('endereco'));
+                $params->complemento = $this->limpa_tags($request->input('complemento'));
+                $params->bairro = $this->limpa_tags($request->input('bairro'));
+                $params->cidade = $this->limpa_tags($request->input('cidade'));
+                $params->uf = $this->limpa_tags($request->input('uf'));
+                $params->tabeliao = $this->limpa_tags($request->input('tabeliao'));
 
 
-            $this->ICartoriosService->updateCartorio($cartorio, $params);
+                $this->ICartoriosService->updateCartorio($cartorio, $params);
             DB::commit();
 
             return response()->json([
@@ -166,7 +177,6 @@ class ApiCartorioController extends DefaultController
             ], ErroEnum::STATUS_400);
         }
     }
-
 
     /**
      * @param Cartorios $cartorio

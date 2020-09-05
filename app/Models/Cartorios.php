@@ -30,7 +30,7 @@ class Cartorios extends Model
         'user_id',
     ];
 
-    public function tipo_documento()
+    public function tipodocumento()
     {
         return $this->hasOne(TipoDocumento::class, 'id', 'tipo_documento');
     }

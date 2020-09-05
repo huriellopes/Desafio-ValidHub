@@ -21,13 +21,14 @@ class CreateCartoriosTable extends Migration
             $table->string('documento')->nullable();
             $table->string('cep')->nullable();
             $table->string('endereco')->nullable();
+            $table->string('complemento')->nullable();
             $table->string('bairro')->nullable();
             $table->string('cidade')->nullable();
             $table->string('uf')->nullable();
             $table->string('telefone')->nullable();
             $table->string('email')->nullable();
             $table->string('tabeliao')->nullable();
-            $table->char('ativo', 2)->nullable();
+            $table->char('ativo', 1)->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('tipo_documento')
                 ->references('id')

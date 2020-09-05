@@ -67,6 +67,14 @@
                                     <input type="text" name="endereco"  id="endereco" class="form-control" value="{{ $cartorio->endereco }}" />
                                 </div>
                             </div>
+
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label for="complemento">Complemento</label>
+                                    <input type="text" name="complemento"  id="complemento" class="form-control" value="{{ $cartorio->complemento }}" />
+                                </div>
+                            </div>
+
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label for="cidade">Cidade</label>

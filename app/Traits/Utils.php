@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use PDF;
 use Carbon\Carbon;
 use SimpleXMLElement;
 
@@ -18,6 +19,11 @@ trait Utils
         return preg_replace('(<(/?[^\>]+)>)', '', $variavel);
     }
 
+    /**
+     * @param $date
+     * @param $format
+     * @return string
+     */
     public function formatDate($date, $format)
     {
         return Carbon::createFromFormat('d/m/Y', $date)->format($format);
@@ -43,5 +49,13 @@ trait Utils
     public function readingXML($arquivo)
     {
         return simplexml_load_string($arquivo);
+    }
+
+    public function geraPDF($view, $dados)
+    {
+        $pdf = PDF::loadView($view, compact('dados'));
+        return $pdf
+            ->setPaper('a4', 'landscape')
+            ->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
     }
 }

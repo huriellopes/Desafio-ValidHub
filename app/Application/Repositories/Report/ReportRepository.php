@@ -15,9 +15,11 @@ class ReportRepository implements IReportRepository
      */
     public function reportBetweenDate(stdClass $params): Collection
     {
-        return Cartorios::with('tipo_documento','OwnerCreated')
-            ->where('created_at', '>=', $params->date_start)
-            ->where('created_at', '<=', $params->date_end)
+        return Cartorios::with('tipodocumento','OwnerCreated')
+            ->where('uf', $params->uf)
+            ->whereBetween('created_at', [$params->date_start, $params->date_end])
+//            ->where(, '>=', )
+//            ->where('created_at', '<=', )
             ->get();
     }
 }

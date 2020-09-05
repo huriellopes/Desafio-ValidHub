@@ -53,11 +53,11 @@ const FuncoesUteis = function () {
         });
     };
 
-    calendarDate = (input) => {
+    calendarDate = (input, start = '+0d') => {
         $("#"+input).datepicker({
             language: 'pt-BR',
             format: 'dd/mm/yyyy',
-            startDate: '+0d',
+            startDate: start,
             forceParse: true,
             todayBtn: "linked",
             todayHighlight: true,

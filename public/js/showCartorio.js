@@ -206,10 +206,92 @@ const ShowCartorio = function () {
         }, "Cep Inválido");
     };
 
+    // Requisição para busca do cep
+    const getCepAddress = (url) =>
+        $.ajax({
+            method: 'GET',
+            url: url,
+            dataType: 'JSON',
+        });
+
+    // Limpa os dados, caso dê erro!
+    const limpa_formulario_cep = () => {
+        //Limpa valores do formulário de cep.
+        document.getElementById('endereco').value= "";
+        document.getElementById('complemento').value= "";
+        document.getElementById('bairro').value= "";
+        document.getElementById('cidade').value= "";
+        document.getElementById('uf').value= "";
+    };
+
+    // Monta os dados
+    let dados = function(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('endereco').value = conteudo.logradouro;
+            document.getElementById('bairro').value = conteudo.bairro;
+            document.getElementById('complemento').value = conteudo.complemento;
+            document.getElementById('cidade').value = conteudo.localidade;
+            document.getElementById('uf').value = conteudo.uf;
+        }
+    };
+
+
+    // Debbounce - para busca
+    function debounceEvent(fn, time, wait = 1000) {
+        return function () {
+            clearTimeout(time);
+
+            time = setTimeout(() => {
+                // Aplicando o evento (arguments)!
+                fn.apply(this, arguments);
+            }, wait);
+        }
+    }
+
+    let handleKeyup = async function(e) {
+
+        // Cep com replace, retirando a mascára
+        let cep = e.target.value.replace('-', '');
+
+        // Url da busca do cep!
+        let url = `https://viacep.com.br/ws/${cep}/json/`;
+
+        // Busca o cep!
+        let response = await getCepAddress(url);
+
+        // Monta os dados!
+        const endereco = {
+            'logradouro': response.logradouro,
+            'bairro': response.bairro,
+            'complemento': response.complemento,
+            'localidade': response.localidade,
+            'uf': response.uf
+        };
+
+        // Mostra os dados!
+        dados(endereco);
+
+        // Caso dê erro, limpa o formulário e emite um alerta de atenção!
+        if (response.erro) {
+            //CEP não Encontrado.
+            limpa_formulario_cep();
+            swal('Ops...', 'CEP não encontrado.', 'warning');
+        }
+    }
+
+    // Dispara o evento!
+    let getCep = function () {
+        const elemento_cep = document.getElementById('cep');
+
+        elemento_cep.addEventListener('keyup', debounceEvent(handleKeyup)); // Passe o wait (tempo), caso queira!
+    };
+
     return {
         init: function () {
             initPlugin();
             validateForm();
+            getCep();
         }
     };
 }();

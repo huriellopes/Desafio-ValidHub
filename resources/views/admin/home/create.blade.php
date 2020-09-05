@@ -66,6 +66,12 @@
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
+                                    <label for="complemento">Complemento</label>
+                                    <input type="text" name="complemento" id="complemento" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col form-group">
                                     <label for="cidade">Cidade</label>
                                     <input type="text" id="cidade" name="cidade" class="form-control" />
                                 </div>

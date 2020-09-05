@@ -17,7 +17,7 @@ class CartoriosRepository implements ICartoriosRepository
      */
     public function listCartorios(): Collection
     {
-        return Cartorios::with('tipo_documento')->orderBy('id')->get();
+        return Cartorios::with('tipodocumento')->orderBy('id')->get();
     }
 
     /**
@@ -35,6 +35,7 @@ class CartoriosRepository implements ICartoriosRepository
         $cartorio->documento = $params->documento;
         $cartorio->cep = $params->cep;
         $cartorio->endereco = $params->endereco;
+        $cartorio->complemento = $params->complemento;
         $cartorio->bairro = $params->bairro;
         $cartorio->cidade = $params->cidade;
         $cartorio->uf = $params->uf;
@@ -48,6 +49,8 @@ class CartoriosRepository implements ICartoriosRepository
 
     public function cargaXML(SimpleXMLElement $params) : Cartorios
     {
+        $ativo = trim($params->ativo);
+
         $cartorios = new Cartorios();
         $cartorios->nome = $params->nome;
         $cartorios->razao = $params->razao;
@@ -57,11 +60,12 @@ class CartoriosRepository implements ICartoriosRepository
         $cartorios->documento = $params->documento;
         $cartorios->cep = $params->cep;
         $cartorios->endereco = $params->endereco;
+        $cartorios->complemento = $params->complemento;
         $cartorios->bairro = $params->bairro;
         $cartorios->cidade = $params->cidade;
         $cartorios->uf = $params->uf;
         $cartorios->tabeliao = $params->tabeliao;
-        $cartorios->ativo = $params->ativo;
+        $cartorios->ativo = $ativo;
         $cartorios->user_id = Auth::user()->id;
         $cartorios->save();
 
@@ -74,7 +78,7 @@ class CartoriosRepository implements ICartoriosRepository
      */
     public function getCartorioById(Cartorios $cartorio): Cartorios
     {
-        return Cartorios::with('tipo_documento')->where('id', '=', $cartorio->id)->first();
+        return Cartorios::with('tipodocumento')->where('id', '=', $cartorio->id)->first();
     }
 
     /**
@@ -104,6 +108,7 @@ class CartoriosRepository implements ICartoriosRepository
             "documento" => $params->documento,
             "cep" => $params->cep,
             "endereco" => $params->endereco,
+            "complemento" => $params->complemento,
             "bairro" => $params->bairro,
             "cidade" => $params->cidade,
             "uf" => $params->uf,
